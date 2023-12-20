@@ -19,6 +19,22 @@ namespace ClassLibrary
             }
         }
 
+        public bool CanMove(int heightPos, int widthPos, Direction direction)
+        {
+            switch (direction)
+            {
+                case Direction.Up:
+                    return PlaygroundNet[heightPos - 1, widthPos] == ' ';
+                case Direction.Down:
+                    return PlaygroundNet[heightPos + 1, widthPos] == ' ';
+                case Direction.Right:
+                    return PlaygroundNet[heightPos, widthPos + 1] == ' ';
+                case Direction.Left:
+                    return PlaygroundNet[heightPos, widthPos - 1] == ' ';
+            }
+            return false;
+        }
+
         public bool SpawnPlayer(Player player)
         {
             if (PlaygroundNet[player.HeightIndex, player.WidthIndex] == ' ')

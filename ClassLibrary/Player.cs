@@ -13,5 +13,31 @@
             HeightIndex = heightIndex;
             WidthIndex = widthIndex;
         }
+
+        public bool Move(Playground playground, Direction direction)
+        {
+            bool canMove = playground.CanMove(HeightIndex, WidthIndex, direction);
+
+            if (canMove)
+            {
+                switch (direction)
+                {
+                    case Direction.Left:
+                        --WidthIndex;
+                        break;
+                    case Direction.Right:
+                        ++WidthIndex;
+                        break;
+                    case Direction.Up:
+                        --HeightIndex;
+                        break;
+                    case Direction.Down:
+                        ++HeightIndex;
+                        break;
+                }
+            }
+
+            return canMove;
+        }
     }
 }
